@@ -73,7 +73,9 @@ struct VertexArray {
         }
     }
 
-    ~VertexArray() { if (exists()) glDeleteVertexArrays(1, &m_handle); }
+    ~VertexArray() {
+        if (exists()) glDeleteVertexArrays(1, &m_handle);
+    }
     GLuint handle() { return m_handle; }
     bool exists() { return m_handle != 0; }
     void bind() { glBindVertexArray(m_handle); }
@@ -172,7 +174,9 @@ struct Texture {
         create(width, height, internalFormat, GL_TEXTURE_2D_MULTISAMPLE, samples);
     }
 
-    ~Texture() { if (exists()) glDeleteTextures(1, &m_handle); }
+    ~Texture() {
+        if (exists()) glDeleteTextures(1, &m_handle);
+    }
     GLuint handle() { return m_handle; }
     bool exists() { return m_handle != 0; }
     void bind() { glBindTexture(m_binding, m_handle); }
@@ -199,7 +203,9 @@ struct Framebuffer {
         }
     }
 
-    ~Framebuffer() { if (exists()) glDeleteFramebuffers(1, &m_handle); }
+    ~Framebuffer() {
+        if (exists()) glDeleteFramebuffers(1, &m_handle);
+    }
     GLuint handle() { return m_handle; }
     bool exists() { return m_handle != 0; }
     void bind(GLenum target) { glBindFramebuffer(target, m_handle); }
@@ -243,7 +249,9 @@ enum ShaderType {
 struct Shader {
     Shader() {}
     Shader(const std::string_view source, ShaderType type) { create(source, static_cast<GLenum>(type)); }
-    ~Shader() { if (exists()) glDeleteShader(m_handle); }
+    ~Shader() {
+        if (exists()) glDeleteShader(m_handle);
+    }
 
     // Returns whether compilation failed or not
     Status create(const std::string_view source, GLenum type) {
@@ -344,7 +352,9 @@ struct VertexBuffer {
         }
     }
 
-    ~VertexBuffer() { if (exists()) glDeleteBuffers(1, &m_handle); }
+    ~VertexBuffer() {
+        if (exists()) glDeleteBuffers(1, &m_handle);
+    }
     GLuint handle() { return m_handle; }
     bool exists() { return m_handle != 0; }
     void bind() { glBindBuffer(GL_ARRAY_BUFFER, m_handle); }

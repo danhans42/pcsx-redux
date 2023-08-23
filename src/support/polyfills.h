@@ -48,6 +48,6 @@ static constexpr T byteSwap(T val) {
 #endif
 }
 
-}
+}  // namespace PolyFill
 
-}
+}  // namespace PCSX
